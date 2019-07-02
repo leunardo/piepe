@@ -1,0 +1,24 @@
+{
+  "name": "piepe",
+  "version": "1.0.0",
+  "description": "Pipe your data in a stream-like API",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leunardo/piepe.git"
+  },
+  "keywords": [
+    "pipe",
+    "javascript",
+    "stream"
+  ],
+  "author": "Leonardo de Melo Alves <leunardosevla@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leunardo/piepe/issues"
+  },
+  "homepage": "https://github.com/leunardo/piepe#readme"
+}
