@@ -15,7 +15,7 @@ function toUpper(value: string) {
 
 describe('The pipeBind function', () => {
   it('must have a defined context', () => {
-    const upperName = pipeBind(myThis, getName, toUpper)('Alfredo');
+    const upperName = pipeBind([getName, toUpper], myThis)('Alfredo');
 
     expect(upperName).toBe('ALFREDOTEST');
   });
