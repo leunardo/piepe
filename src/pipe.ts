@@ -22,21 +22,18 @@ export function pipe<TReturn = any, TArg = any>(
 ): (args: TArg) => TReturn {
   return args => {
     if (!Array.isArray(fns)) {
-      throw new SyntaxError('The argument provided must be an Array.');
+      throw new TypeError('The argument provided must be an Array.');
     }
 
     if (fns.length === 0) {
-      throw new SyntaxError(
+      throw new TypeError(
         'The array must contain at least one Function to be piped.'
       );
     }
 
-    var onlyFunctions = fns.every(function(fn) {
-      return typeof fn === 'function';
-    });
-
+    var onlyFunctions = fns.every(fn => typeof fn === 'function');
     if (!onlyFunctions) {
-      throw new SyntaxError(
+      throw new TypeError(
         'One or more arguments provided are not functions.'
       );
     }
