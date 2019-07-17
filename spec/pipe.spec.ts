@@ -36,4 +36,43 @@ describe('The pipe function', () => {
 
     expect(result).toBe(base + augmented);
   });
+
+  it('must have at least one function to be piped', () => {
+    expect(() => pipe()(2)).toThrow();
+  })
+
+  it('must have only functions provided to be piped', () => {
+    expect(() => {
+      pipe(
+        a => 2 + a,
+        b => b / 3,
+        32 as any
+      )(23);
+    }).toThrow();
+  });
+
+  it('must execute the functions provided in order', () => {
+    let total    = 0;
+    const first  = 1 << 1;
+    const second = 1 << 2;
+    const third  = 1 << 3;
+    const finished = first | second | third;
+
+    function f() {
+      total |= first;
+      expect(total).toEqual(first);
+    }
+
+    function s() {
+      total |= second;
+      expect(total).toEqual(first | second);
+    }
+
+    function t() {
+      total |= third;
+      expect(total).toEqual(finished);
+    }
+    
+    pipe(f, s, t)(null);
+  });
 });
