@@ -21,10 +21,6 @@ export function pipe<TReturn = any, TArg = any>(
   ...fns: Array<IPipe<TArg>>
 ): (args: TArg) => TReturn {
   return args => {
-    if (!Array.isArray(fns)) {
-      throw new TypeError('The argument provided must be an Array.');
-    }
-
     if (fns.length === 0) {
       throw new TypeError(
         'The array must contain at least one Function to be piped.'
