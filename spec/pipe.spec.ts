@@ -38,7 +38,7 @@ describe('The pipe function', () => {
   });
 
   it('must have at least one function to be piped', () => {
-    expect(() => pipe()(2)).toThrow();
+    expect(() => pipe()(2)).toThrowError('The array must contain at least one Function to be piped.');
   })
 
   it('must have only functions provided to be piped', () => {
@@ -48,7 +48,7 @@ describe('The pipe function', () => {
         b => b / 3,
         32 as any
       )(23);
-    }).toThrow();
+    }).toThrowError('One or more arguments provided are not functions.');
   });
 
   it('must execute the functions provided in order', () => {
@@ -72,7 +72,7 @@ describe('The pipe function', () => {
       total |= third;
       expect(total).toEqual(finished);
     }
-    
+
     pipe(f, s, t)(null);
   });
 });

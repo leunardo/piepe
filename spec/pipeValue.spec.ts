@@ -18,4 +18,13 @@ describe('The pipeValue function', () => {
 
         expect(doSomething).toBe(5);
     })
+
+    it('must not use a context if not provided', () => {
+        pipeValue<number>(2).to(
+            function (arg) {
+                expect(this).toBeUndefined();
+                return arg;
+            }
+        );
+    })
 });
