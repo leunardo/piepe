@@ -1,4 +1,7 @@
-import { FluentPipe, IPipe } from './pipe.d';
+export type IPipe<T> = (something: T) => any;
+export interface FluentPipe<T, U> {
+  to: (...fns: Array<IPipe<U>>) => T
+}
 
 /**
  * Pipes a value through a chain of functions defined. The value of every function is
