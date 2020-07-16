@@ -1,4 +1,6 @@
 const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = function (env) {
   return {
@@ -16,8 +18,25 @@ module.exports = function (env) {
     },
     module: {
       rules: [
-          { test: /\.ts$/, loader: 'ts-loader', include: [__dirname] }
+        {
+          test: /\.tsx?$/,
+          loader: "ts-loader",
+          exclude: [/node_modules/],
+          include: path.resolve('src'),
+          options: {
+              configFile: "tsconfig.json",
+          },
+        }
       ]
-    }
+    },
+    plugins: [
+      new CleanWebpackPlugin(),
+      new CopyPlugin({
+        patterns: [
+          { from: './package.json' },
+          { from: './README.md' },
+        ],
+      }),
+    ]
   };
 };
