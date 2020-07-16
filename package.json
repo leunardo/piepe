@@ -43,7 +43,9 @@
     "include": [
       "src/**/*.ts"
     ],
-    "reporter": ["text"],
+    "reporter": [
+      "text"
+    ],
     "all": true
   }
 }
